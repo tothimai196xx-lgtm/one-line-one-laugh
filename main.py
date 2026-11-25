@@ -17,10 +17,13 @@ LINE = "My houseplants died, so I bought plastic ones \u2014 now I feel guilty f
 
 
 def main() -> None:
+    line = LINE.strip()
+    if not 1 <= len(line) <= 140:
+        raise SystemExit(f"entry must be 1-140 characters, got {len(line)}")
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
-        f.write(LINE)
-    print(LINE)
+        f.write(line)
+    print(line)
 
 
 if __name__ == "__main__":
